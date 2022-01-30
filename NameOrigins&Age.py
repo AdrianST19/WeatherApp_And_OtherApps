@@ -4,7 +4,7 @@ import requests
 
 name = input("Input your name: ")
 
-# Name age
+# Name age (the age is given randomly by the API)
 BASE_URL = "https://api.agify.io/"
 request_url = f"{BASE_URL}?name={name}"
 response = requests.get(request_url)
