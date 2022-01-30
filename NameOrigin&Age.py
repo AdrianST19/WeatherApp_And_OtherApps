@@ -1,3 +1,4 @@
+from tracemalloc import stop
 from urllib import request
 import requests
 
@@ -26,14 +27,15 @@ if response.status_code == 200 and response2.status_code == 200:
     print("You have to introduce a name...with letters!") if checkLetters == True else print(
         f"Your name is {name} and you are {age} years old!")
 
-    # If everything is ok, it prints the origin of the name
-    data2 = response2.json()
-    print(f"The origins of the name {name} are:")
-    i = 0
-    while i < len(data2['country']):
-        print("Country: ", data2['country'][i]['country_id'])
-        print("Probability: ", round(
-            data2['country'][i]['probability'], 2), "%")
-        i += 1
+    if checkLetters==False: 
+        # If everything is ok, it prints the origin of the name
+        data2 = response2.json()
+        print(f"The origins of the name {name} are:")
+        i = 0
+        while i < len(data2['country']):
+            print("Country: ", data2['country'][i]['country_id'])
+            print("Probability: ", round(
+                data2['country'][i]['probability'], 2), "%")
+            i += 1
 else:
     print("Something went wrong, try again!")
