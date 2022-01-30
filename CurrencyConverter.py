@@ -8,7 +8,7 @@ request_url = f"{BASE_URL}{coin}"
 response = requests.get(request_url)
 
 if response.status_code == 200:
-    data = response.json()
+    data = response.json() 
     print(f"One {coin} equals {data['rates'][compare]} {compare}")
 else:
     print("Something went wrong!")
